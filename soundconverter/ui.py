@@ -34,7 +34,7 @@ import gnomevfs
 from gconfstore import GConfStore
 from fileoperations import filename_to_uri, beautify_uri, vfs_writable, \
     vfs_exists
-from fileoperations import unquote_filename, vfs_walk, vfs_exists
+from fileoperations import unquote_filename, vfs_walk
 from fileoperations import use_gnomevfs
 from gstreamer import ConverterQueue
 from gstreamer import available_elements, TypeFinder
@@ -174,7 +174,7 @@ class FileList:
                              mime_id, time):
         widget.stop_emission('drag_data_received')
         if mime_id >= 0 and mime_id < len(self.drop_mime_types):
-            uris = [filename_to_uri(uri.strip()) for uri in selection.data.split('\n') if uri]
+            uris = [filename_to_uri(uri.strip()) for uri in selection.data.split('\n')]
             self.add_uris(uris)
             context.finish(True, False, time)
 
